@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Códigos Blox Fruits</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #0b0f1a 0%, #05121f 100%);
+      color: #dfffdc;
+    }
+
+    header {
+      background: #061525;
+      padding: 2rem;
+      text-align: center;
+      color: #00ffb3;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: #baf8e3;
+    }
+
+    main {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #00c897;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .code-card {
+      background: #112033;
+      border: 2px solid #00c897;
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .code-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 200, 151, 0.4);
+    }
+
+    .code-name {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #baffea;
+    }
+
+    .code-desc {
+      margin-top: 0.5rem;
+      color: #c9e4db;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #00c897;
+      color: #000;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .copy-btn:hover {
+      background-color: #00a77f;
+    }
+
+    .copied {
+      background-color: #014d3c !important;
+      color: #baf8e3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #789f9f;
+      font-size: 0.9rem;
+    }
+
+    #searchBox {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Códigos Ativos do Blox Fruits</h1>
+    <p>Atualizado regularmente com os últimos códigos do jogo!</p>
+  </header>
+  <main>
+    <input type="text" id="searchBox" placeholder="Buscar código...">
+    <h2>Códigos Disponíveis</h2>
+    <div class="code-container" id="codeList"></div>
+  </main>
+  <footer>
+    <p>Feito com ❤️ por fãs de Blox Fruits | Não oficial</p>
+  </footer>
+
+  <script>
+    const codes = [
+      { name: "TRIPLEABUSE", desc: "2x XP por 20 minutos" },
+      { name: "NOMOREHACK", desc: "2x XP por 20 minutos" },
+      { name: "Sub2Fer999", desc: "2x XP por 20 minutos" },
+      { name: "KITT_RESET", desc: "reinicialização de estatísticas" },
+      { name: "REWARDFUN", desc: "2x XP por 20 minutos" },
+      { name: "ADMINFIGHT", desc: "2x XP por 20 minutos" },
+      { name: "ADMINDARES", desc: "2x XP por 20 minutos" },
+      { name: "Sub2UncleKizaru", desc: "reinicialização de estatísticas" },
+      { name: "TheGreatAce", desc: "2x XP por 20 minutos" },
+      { name: "BANEXPLOIT", desc: "2x XP por 20 minutos" },
+      { name: "Sub2NoobMaster123", desc: "2x XP por 15 minutos" },
+      { name: "Bignews", desc: "título no jogo" },
+      { name: "SUB2GAMERROBOT_EXP1", desc: "30 minutos de 2x XP" },
+      { name: "fruitconcepts", desc: "2x XP por 20 minutos" },
+      { name: "Starcodeheo", desc: "2x XP por 20 minutos" },
+      { name: "fudd10_v2", desc: "2 Beli" },
+      { name: "FIGHT4FRUIT", desc: "2x XP por 20 minutos" },
+      { name: "krazydares", desc: "2x XP por 20 minutos" },
+      { name: "StrawHatMaine", desc: "2x XP por 15 minutos" },
+      { name: "Magicbus", desc: "2x XP por 20 minutos" },
+      { name: "kittgaming", desc: "2x XP por 20 minutos" },
+      { name: "CODESLIDE", desc: "2x XP por 20 minutos" },
+      { name: "NEWTROLL", desc: "2x XP por 20 minutos" },
+      { name: "Bluxxy", desc: "2x XP por 20 minutos" },
+      { name: "ADMINHACKED", desc: "reinicialização de estatísticas" },
+      { name: "Axiore", desc: "2x XP por 20 minutos" },
+      { name: "CHANDLER", desc: "0 Beli" },
+      { name: "EARN_FRUITS", desc: "2x XP por 20 minutos" },
+      { name: "SUB2GAMERROBOT_RESET1", desc: "reinicialização de estatísticas" },
+      { name: "24NOADMIN", desc: "2x XP por 20 minutos" },
+      { name: "Sub2CaptainMaui", desc: "2x XP por 20 minutos" },
+      { name: "Enyu_is_Pro", desc: "2x XP por 20 minutos" }
+    ];
+
+    const container = document.getElementById("codeList");
+    codes.forEach(code => {
+      const card = document.createElement("div");
+      card.className = "code-card";
+      card.innerHTML = `
+        <div class="code-name">${code.name}</div>
+        <div class="code-desc">${code.desc}</div>
+        <button class="copy-btn" data-code="${code.name}">Copiar</button>
+      `;
+      container.appendChild(card);
+    });
+
+    container.addEventListener('click', function (e) {
+      if (e.target.classList.contains('copy-btn')) {
+        const code = e.target.getAttribute('data-code');
+        navigator.clipboard.writeText(code).then(() => {
+          e.target.textContent = 'Copiado!';
+          e.target.classList.add('copied');
+          setTimeout(() => {
+            e.target.textContent = 'Copiar';
+            e.target.classList.remove('copied');
+          }, 1500);
+        });
+      }
+    });
+
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('input', () => {
+      const query = searchBox.value.toLowerCase();
+      const codeCards = document.querySelectorAll('.code-card');
+      codeCards.forEach(card => {
+        const name = card.querySelector('.code-name').textContent.toLowerCase();
+        const desc = card.querySelector('.code-desc').textContent.toLowerCase();
+        card.style.display = (name.includes(query) || desc.includes(query)) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
